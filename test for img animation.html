@@ -1,0 +1,39 @@
+<html>
+<head><title>Tihatian Test</title>
+<style>
+#my-image {
+  transition: opacity 1s ease-in-out;
+}
+
+#my-image.fade-out {
+  opacity: 0;
+}
+
+</style>
+</head>
+<body>
+<img id="my-image" src="luvata-2.jpg" alt="My Image">
+
+<button onclick="changePic(0)">click1</button>
+<button onclick="changePic(1)">click2</button>
+
+
+<script>
+const images = [
+  'luvata-2.jpg',
+  'luvata-3.jpg'
+];
+
+const img = document.getElementById('my-image');
+
+function changePic(i) {
+  img.classList.add('fade-out'); // Add fade-out class to the image element
+  setTimeout(() => {
+    img.src = images[i];
+    img.classList.remove('fade-out'); // Remove fade-out class to trigger the fade-in transition
+  }, 1000); // Change the image source after 1 second
+}
+
+</script>
+</body>
+</html>

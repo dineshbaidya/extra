@@ -1,0 +1,77 @@
+<html>
+<head>
+  <title>Test For Faq</title>
+  <style>
+    .faq-item {
+      margin-bottom: 20px;
+    }
+
+    .faq-question {
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out;
+    }
+
+    .faq-item.show .faq-answer {
+      opacity: 1;
+      height: auto;
+    }
+
+    #image {
+      height: 100px;
+      width: 200px;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    #image.hide {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="faq">
+    <div class="faq-item">
+      <div class="faq-question">Question 1</div>
+      <div class="faq-answer">Answer 1</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Question 2</div>
+      <div class="faq-answer">Answer 2</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Question 3</div>
+      <div class="faq-answer">Answer 3</div>
+    </div>
+  </div>
+  <img id="image" src="luvata-1.jpg">
+  <script>
+    const faqItems = document.querySelectorAll('.faq-item');
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    const image = document.querySelector('#image');
+
+    faqQuestions.forEach((question, index) => {
+      question.addEventListener('click', () => {
+        faqItems.forEach((item, i) => {
+          if (index !== i) {
+            item.classList.remove('show');
+          }
+        });
+        faqItems[index].classList.toggle('show');
+        image.classList.add('hide');
+        setTimeout(() => {
+          image.src = images[index];
+          image.classList.remove('hide');
+        }, 500);
+      });
+    });
+
+    const images = ['luvata-1.jpg', 'luvata-2.jpg', 'luvata-3.jpg'];
+  </script>
+</body>
+</html>
